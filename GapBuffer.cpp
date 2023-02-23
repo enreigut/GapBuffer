@@ -91,7 +91,6 @@ void GapBuffer::Left(size_t position)
 	}
 }
 
-
 /**
 * Moves the gap buffer to the right.
 *
@@ -135,7 +134,6 @@ void GapBuffer::DeleteBeforeGap(size_t size)
 		}
 	}
 }
-
 
 /**
 * Deletes the chars after the gap. Behaves like a SUPR.
@@ -189,6 +187,29 @@ void GapBuffer::Print() const
 		std::printf("%c", m_buffer[i]);
 
 	std::printf("\n");
+}
+
+/**
+* Method that copies the gap buffer to another buffer without
+* the gap itself so you can print the string.
+* 
+* @param buffer is the buffer we want to copy the gap buffer
+*/
+char* GapBuffer::SetBuffer(char* buffer)
+{
+	if (buffer)
+		free(buffer);
+
+	buffer = (char*)malloc(m_size - (m_gap_end - m_gap_start));
+
+	if (buffer)
+	{
+		std::memcpy(buffer, m_buffer, m_gap_start);
+		std::memcpy(buffer + m_gap_start, m_buffer + m_gap_end + 1, m_size - m_gap_end);
+		return buffer;
+	}
+
+	return nullptr;
 }
 
 /**

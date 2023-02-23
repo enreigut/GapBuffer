@@ -31,6 +31,7 @@ public:
 	void DeleteAfterGap(size_t size = 1);
 	void DebugPrint() const;
 	void Print() const;
+	char* SetBuffer(char* buffer);
 
 private:
 

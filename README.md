@@ -16,6 +16,7 @@ The implemented methods are:
 	- void DeleteAfterGap(size_t size = 1);
 	- void DebugPrint() const;
 	- void Print() const;
+	- char* SetBuffer(char* buffer);
 
 A quick example on how to implement and use the GapBuffer class:
 
